@@ -1,6 +1,8 @@
 
 var http = require('http')
 
+console.log('listening...')
+
 http.createServer(function(req, res) {
-  res.end('test commit 3')
+  res.end('pineapple!')
 }).listen(3000)
