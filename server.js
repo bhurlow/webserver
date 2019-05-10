@@ -1,8 +1,15 @@
+const http = require('http')
+const { PORT = 3000 } = process.env
 
-var http = require('http')
+console.log(`listening on port ${PORT}`)
 
-console.log('listening...')
+const server = http.createServer((req, res) => {
+  let data = {
+    method: req.method,
+    headers: req.headers,
+    url: req.url
+  }
+  res.end(JSON.stringify(data))
+})
 
-http.createServer(function(req, res) {
-  res.end('broccoli')
-}).listen(3000)
+server.listen(PORT)

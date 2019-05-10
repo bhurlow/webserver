@@ -1,5 +1,4 @@
-#FROM node:latest
-FROM bhurlow/lein-node
+FROM node:latest
 EXPOSE 3000
 ADD . /app
 WORKDIR /app
