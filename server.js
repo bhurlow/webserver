@@ -1,5 +1,7 @@
 const http = require('http')
-const { PORT = 3000 } = process.env
+const os = require('os')
+
+const { PORT = 3000, START_DELAY = 0 } = process.env
 
 console.log(`listening on port ${PORT}`)
 
@@ -7,9 +9,13 @@ const server = http.createServer((req, res) => {
   let data = {
     method: req.method,
     headers: req.headers,
-    url: req.url
+    url: req.url,
+    hostname: os.hostname(),
+    START_DELAY
   }
   res.end(JSON.stringify(data))
 })
 
-server.listen(PORT)
+setTimeout(() => {
+  server.listen(PORT)
+}, START_DELAY)
